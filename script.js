@@ -27,7 +27,7 @@
 // Regra: preço quebrado nunca aparece. Se a resposta falhar ou vier incompleta, a seção some.
 (function () {
   var ENDPOINT = 'https://pydxtjvtnaddutevwtjw.supabase.co/functions/v1/planos-publicos';
-  var TRIAL_URL = 'https://app.zapobra.online/';
+  var TRIAL_URL = 'https://app.zapobra.online/?cadastro=1';
   var RECOMENDADO = 'profissional';
   var TIMEOUT_MS = 8000;
   var CICLOS = ['MONTHLY', 'QUARTERLY', 'YEARLY'];
