@@ -20,11 +20,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1077415665259192');
+fbq('init', '1630532958430610');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1077415665259192&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1630532958430610&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
@@ -41,6 +41,7 @@ src="https://www.facebook.com/tr?id=1077415665259192&ev=PageView&noscript=1"
       <a href="#como-funciona">Como funciona</a>
       <a href="#recursos">Recursos</a>
       <a href="#depoimentos">Depoimentos</a>
+      <a href="#precos" class="js-pricing-link">Preços</a>
       <a href="#faq">Dúvidas</a>
     </nav>
     <a href="https://app.zapobra.online/" class="btn btn-primary btn-small">Testar Grátis</a>
@@ -288,6 +289,42 @@ src="https://www.facebook.com/tr?id=1077415665259192&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+<!-- ============ PREÇOS ============ -->
+<!-- Os valores vêm do endpoint planos-publicos (script.js). Nada de preço escrito aqui:
+     enquanto carrega mostra skeleton; se falhar, a seção inteira some. -->
+<section class="section pricing is-loading" id="precos" aria-busy="true">
+  <div class="wrap">
+    <span class="eyebrow center-eyebrow"><span class="dot"></span>Planos</span>
+    <h2 class="section-title center">Teste grátis. Depois, escolha o plano do tamanho da sua obra.</h2>
+    <p class="section-sub center">Todos os planos têm todas as funcionalidades. O que muda é quantas obras e quantas pessoas você usa.</p>
+
+    <div class="cycle-toggle" role="radiogroup" aria-label="Ciclo de cobrança"></div>
+
+    <div class="plans-grid">
+      <div class="plan-card skeleton-card" aria-hidden="true"><span class="sk sk-title"></span><span class="sk sk-price"></span><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-btn"></span></div>
+      <div class="plan-card skeleton-card" aria-hidden="true"><span class="sk sk-title"></span><span class="sk sk-price"></span><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-btn"></span></div>
+      <div class="plan-card skeleton-card" aria-hidden="true"><span class="sk sk-title"></span><span class="sk sk-price"></span><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-btn"></span></div>
+    </div>
+
+    <div class="pricing-details">
+      <h3 class="compare-table-title">Compare os planos</h3>
+      <div class="compare-table-scroll">
+        <table class="compare-table">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="addon-note"></p>
+
+      <div class="pricing-cta">
+        <a href="https://app.zapobra.online/" class="btn btn-primary js-trial-cta">Começar teste grátis de 7 dias</a>
+        <span class="cta-subnote">Sem cartão de crédito</span>
+      </div>
+    </div>
+  </div>
+</section>
+<noscript><style>#precos, .js-pricing-link { display: none !important; }</style></noscript>
 
 <!-- ============ FAQ ============ -->
 <section class="section faq" id="faq">
