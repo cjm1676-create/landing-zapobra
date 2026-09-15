@@ -1,3 +1,49 @@
+// Origem do visitante (utm_* + fbclid) — repassada pro app em todo link "Testar grátis".
+// Também fica no cookie zo_utm em .zapobra.online por 90 dias, pra quem volta depois
+// direto no app ainda ser atribuído ao anúncio. Os cookies _fbp/_fbc o próprio pixel
+// já grava no domínio raiz, então chegam no app sem precisar repassar.
+(function () {
+  var APP_HOST = 'app.zapobra.online';
+  var CHAVES = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'fbclid'];
+  var origem = {};
+
+  var params = new URLSearchParams(window.location.search);
+  CHAVES.forEach(function (k) {
+    var v = params.get(k);
+    if (v) origem[k] = v.slice(0, 500);
+  });
+
+  var temUtm = CHAVES.some(function (k) { return k !== 'fbclid' && origem[k]; });
+  if (temUtm) {
+    var dominio = /(^|\.)zapobra\.online$/.test(location.hostname) ? '; domain=.zapobra.online' : '';
+    var seguro = location.protocol === 'https:' ? '; Secure' : '';
+    document.cookie = 'zo_utm=' + encodeURIComponent(JSON.stringify(origem)) +
+      '; max-age=' + (60 * 60 * 24 * 90) + '; path=/; SameSite=Lax' + dominio + seguro;
+  } else {
+    var par = document.cookie.split('; ').filter(function (c) { return c.indexOf('zo_utm=') === 0; })[0];
+    if (par) {
+      try { origem = JSON.parse(decodeURIComponent(par.slice(7))) || {}; } catch (_) { origem = {}; }
+    }
+  }
+
+  if (!Object.keys(origem).length) return;
+
+  // Delegação: pega também os botões da seção de preços, que são criados depois.
+  function decorar(e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var url;
+    try { url = new URL(a.href); } catch (_) { return; }
+    if (url.hostname !== APP_HOST) return;
+    CHAVES.forEach(function (k) {
+      if (typeof origem[k] === 'string' && origem[k] && !url.searchParams.has(k)) url.searchParams.set(k, origem[k]);
+    });
+    a.href = url.toString();
+  }
+  document.addEventListener('click', decorar, true);
+  document.addEventListener('auxclick', decorar, true);
+})();
+
 // Reveal sutil ao rolar — só uma vez por elemento, respeita prefers-reduced-motion
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
