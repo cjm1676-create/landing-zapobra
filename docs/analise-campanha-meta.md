@@ -91,7 +91,11 @@ Com R$ 22,27 por trial, recuperar metade desses 532 cliques perdidos vale mais d
 
 ### Agora (custa nada, faça hoje)
 
-1. **Consolide em um único conjunto.** Suba um conjunto novo com a mesma segmentação e o orçamento somado (R$ 180/dia, ou o que você decidir), e coloque dentro dele os criativos de CONJ-01, CONJ-02, CONJ-06 e CONJ-04. Pause os seis antigos. Deixe o Meta distribuir entre criativos — é isso que ele faz bem, e só funciona com volume de conversão suficiente.
+1. **Consolide no CONJ-01 — não crie conjunto novo.** Ele é o sobrevivente natural: melhor custo por trial (R$ 15,76), melhor conversão visita→trial (10,7%), mais conversões (11) e o mais antigo em veiculação. Leve o orçamento dele para o valor somado, **duplique para dentro dele os anúncios** de CONJ-02, CONJ-06 e CONJ-04, e pause os outros cinco.
+
+   Ao duplicar, use a opção de **publicação existente** em vez de subir o criativo de novo — assim os anúncios levam junto as curtidas, comentários e compartilhamentos já acumulados. Criativo novo começa com prova social zerada, e isso custa CTR.
+
+   **Sobre o salto de orçamento:** a regra de subir 20% por vez existe para não desestabilizar conjunto que já *saiu* do aprendizado. O CONJ-01 nunca saiu — não há estabilidade a proteger. Pode ir direto ao valor cheio. Se preferir ser conservador, dois passos em três dias, mas não fatie mais que isso: cada dia a R$ 30 é um dia sem sinal.
 2. **Exclua Audience Network** nesse conjunto novo, `rewarded_video` em primeiro lugar. Mantenha Facebook e Instagram. Teste WhatsApp Status e Threads separadamente depois, não agora.
 3. **Não mate criativo por CTR.** Ordene por custo por trial, e mesmo assim trate o ranking atual como provisório.
 
@@ -99,7 +103,7 @@ Com R$ 22,27 por trial, recuperar metade desses 532 cliques perdidos vale mais d
 
 4. **Meça trial → pagante.** Você tem 39 trials iniciados. Quantos viraram assinatura? Esse é o número que fecha todo o modelo de unit economics — e é o único que ainda falta. Com ele, CAC por cliente pagante deixa de ser estimativa.
 5. **Investigue a perda clique → visita.** Depois de tirar o Audience Network, se a taxa não subir de ~56% para 75%+, o problema é velocidade da landing, não posicionamento.
-6. **Só depois de sair do aprendizado**, abra um segundo conjunto para testar público de verdade — por exemplo, restringir a quem tem mais de uma obra, que é o comprador do plano Profissional. Enquanto o primeiro não estabilizar, um segundo conjunto só divide o que já é pouco.
+6. **Só depois de sair do aprendizado**, abra um segundo conjunto — e que ele teste algo genuinamente diferente, não outra variação do mesmo público. O candidato óbvio é **remarketing**: quem visitou a landing e não começou o teste. Hoje esse público tem ~668 pessoas em 5 dias, pequeno demais para veicular; em duas ou três semanas fica viável, e tende a ter o melhor custo por trial da conta.
 
 ### O que não fazer
 
