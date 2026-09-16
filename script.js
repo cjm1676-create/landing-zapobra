@@ -137,7 +137,7 @@
     var a = el('a', 'btn btn-primary', texto);
     a.href = TRIAL_URL;
     wrap.appendChild(a);
-    wrap.appendChild(el('span', 'cta-subnote', 'Sem cartão de crédito'));
+    wrap.appendChild(el('span', 'cta-subnote', 'Sem cartão de crédito · Prorrogável pelo WhatsApp'));
     return wrap;
   }
 
