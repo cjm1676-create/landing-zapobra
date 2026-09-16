@@ -123,3 +123,44 @@ O que ainda falta para fechar de verdade: **a taxa trial → pagante**. Enquanto
 ## Nota de método
 
 Números da API do Meta Ads em 16/09/2026, janela máxima, conta `1208504270177372`. "Trials" é o evento `start_trial_website` reportado pelo pixel — mede cadastro no teste, não assinatura paga. A campanha rodava havia ~5 dias na leitura, então todo custo por resultado aqui tem amostra pequena e vai se mover. Os dois conjuntos "Instagram Post" de 2024 estão com campanha pausada e foram ignorados.
+
+---
+
+## Execução da consolidação — 16/09/2026
+
+Aplicado na conta via API, nesta ordem (pausas primeiro, para o gasto cair antes de subir o orçamento):
+
+| Passo | Resultado |
+|---|---|
+| Pausar CONJ-02, CONJ-04, CONJ-05, CONJ-06 | ✅ feito (CONJ-03 já estava pausado) |
+| Criar 3 anúncios dentro do CONJ-01 reusando os `creative_id` originais | ✅ feito |
+| Orçamento do CONJ-01: R$ 30 → **R$ 160/dia** | ✅ feito |
+| Renomear para **CONJ - 01 \| CONSOLIDADO** | ✅ feito |
+| Reativar o conjunto e os anúncios novos | ✅ 3 de 4 |
+
+**Estado final do CONJ - 01 | CONSOLIDADO — R$ 160/dia, ativo:**
+
+| Anúncio | Origem | Custo/trial histórico | Estado |
+|---|---|---:|---|
+| Criativo 01 | já estava no conjunto | R$ 15,78 | ativo |
+| Criativo 02 | de CONJ-02 | R$ 21,66 | ativo |
+| Criativo 06 | de CONJ-04 | R$ 22,63 | ativo |
+| **Criativo 05** | de CONJ-06 | **R$ 16,52** | **bloqueado** |
+
+### O que falhou, e por quê
+
+O Criativo 05 — que era o **segundo melhor da conta** — não subiu. O Meta devolveu:
+
+> *Ad Account Has No Access To Instagram Account: Ad account has no access to this Instagram account.*
+
+O criativo aponta para uma conta do Instagram que a conta de anúncios não tem permissão de usar. O anúncio original em CONJ-06 rodava porque a validação acontece na criação; ao criar um anúncio novo reusando o mesmo criativo, o Meta revalida e barra.
+
+**Não dá para resolver por API — é permissão no Gerenciador de Negócios.** O caminho:
+
+Configurações do Negócio → Contas → **Contas do Instagram** → selecionar a conta → **Adicionar ativos** / Atribuir parceiros → marcar a conta de anúncios `1208504270177372`.
+
+Depois disso o anúncio `120247940271740014` pode ser ativado direto no Ads Manager, ou me avise que eu ativo.
+
+### O objetivo principal foi atingido mesmo assim
+
+A fase de aprendizado é medida **por conjunto**, não por anúncio. Com R$ 160/dia num único conjunto e CPR de R$ 22,27, são ~50 conversões/semana — o CONJ-01 sai do aprendizado com três criativos do mesmo jeito. O Criativo 05 entrando depois só melhora o leque.
