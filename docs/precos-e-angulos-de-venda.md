@@ -96,7 +96,7 @@ O R$ 97 por 1 obra não se sustenta ao lado de um concorrente idêntico no mesmo
 - **Diferenciar o R$ 97 por inclusão** (multi-número + portal do cliente + mensagem ilimitada) em vez de por limite;
 - **Criar um degrau abaixo** para brigar na faixa de R$ 39–59, aceitando margem menor na entrada.
 
-Com infra fixa de ~R$ 222/mês, o ponto de equilíbrio é ~3 clientes no Básico. Um degrau de entrada barato é viável em volume — mas essa é sua decisão de negócio, não minha recomendação.
+**Correção:** eu escrevi aqui que o ponto de equilíbrio era ~3 clientes no Básico, usando só a infra (~R$ 222/mês). Está errado — a base fixa real inclui ferramentas de operação (Claude Code, Kairogen) e existe ainda o tráfego pago. Com a base fixa maior, **o degrau de entrada barato fica pior, não melhor**: a R$ 39 a contribuição por cliente é quase nula e o custo de suporte é o mesmo de um cliente de R$ 197. O R$ 39 do medIAobra é jogada de quem tem base fixa perto de zero ou está comprando participação. Ver `unit-economics.md` para o cálculo correto.
 
 ---
 
