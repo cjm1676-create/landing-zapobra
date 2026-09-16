@@ -1,14 +1,24 @@
 # Benchmark de concorrentes — ZapObra
 
-*v4, 16/09/2026. Substitui a v3 (que tratava todos os players como pares) e o escopo das v1 e v2. Fonte primária: API pública da Biblioteca de Anúncios do Meta, escopo Brasil, 16/09/2026. Preço, trial e funcionalidade vêm de busca pública — o ambiente bloqueia acesso direto aos sites.*
+*v5, 16/09/2026. Fonte primária: API pública da Biblioteca de Anúncios do Meta, escopo Brasil, 16/09/2026. Preço, trial e funcionalidade vêm de busca pública — o ambiente bloqueia acesso direto aos sites.*
 
 ---
 
-## A premissa desta versão
+## Correção de método (v5)
 
-As versões anteriores erraram ao tratar "concorrente" como categoria única. A objeção é procedente: a maior parte dos players levantados tem produto mais pesado que o ZapObra — são ERPs com orçamento, cronograma, BDI, conciliação bancária. Ninguém compra ZapObra *em vez* de um ERP.
+As versões anteriores tinham um viés de seleção que eu não enxerguei: **eu filtrei "concorrente" por "quem anuncia no Meta"**, porque era o único dado que eu conseguia puxar com profundidade. Quem não anunciava virou nota de rodapé — e produto concorrente não deixa de existir porque está com a mídia desligada esta semana.
 
-Mas isso não os torna irrelevantes, porque disputar cliente e disputar atenção são coisas diferentes, e custam em momentos diferentes. Esta versão separa três camadas:
+Pior: a varredura por palavra-chave tem ponto cego. Eu busquei por "gestão de obras", "software para construtora", "IA", "WhatsApp + gestão". O **Obra Manager** anuncia com o headline *"Sua obra organizada, sem sair do WhatsApp"* — nenhuma dessas expressões aparece nele. Ele tem 4 anúncios **ativos** e passou batido por três varreduras minhas.
+
+Dois aprendizados que valem para as próximas rodadas:
+- Varredura por palavra-chave não é censo. Ela acha quem escreve como você espera.
+- Busca por domínio e por nome de marca conhecida precisa vir **antes** da busca por tema, não depois.
+
+A camada 1 abaixo foi refeita com isso corrigido.
+
+---
+
+## As três camadas
 
 | Camada | O que disputa | Quando dói |
 |---|---|---|
@@ -16,44 +26,48 @@ Mas isso não os torna irrelevantes, porque disputar cliente e disputar atençã
 | **2. Atenção** | A mesma impressão, no mesmo leilão | Todo dia que você roda mídia |
 | **3. Categoria mental** | A referência que o lead já tem na cabeça | Na hora de ele entender o que você é |
 
-E, acima das três, o alvo que nenhum benchmark lista: o **status quo**.
+Acima das três, o alvo que nenhum benchmark lista: o **status quo**.
 
 ---
 
 ## Camada 1 — Concorrentes de compra
 
-Quem o seu lead poderia efetivamente contratar no seu lugar. Lista curta.
+Quem o seu lead pode contratar no seu lugar. Critério agora é **sobreposição de produto e de comprador**, não atividade de mídia.
 
-### Zé Obra — o único concorrente direto de verdade (zeobra.com.br)
+### Os WhatsApp-first — colisão frontal
 
-Mesmo produto, mesmo comprador, mesmo mecanismo. Controle de obra pelo WhatsApp, lê NF, NFC-e, NFS-e, recibo, **recibo escrito à mão e print de comprovante PIX**, aceita áudio descrevendo o gasto e transcreve, organiza por fornecedor e categoria, **gera PDF mensal e manda pro cliente pelo próprio WhatsApp**. Teste grátis sem cartão. Público: arquitetos, engenheiros e mestres de obra.
+Estes vendem a mesma promessa que você, para a mesma pessoa, pelo mesmo canal.
 
-O discurso deles: *"criado do zero para o jeito como a obra acontece no Brasil: informal, misturado, por WhatsApp."*
+| Concorrente | Promessa | Trial | Mídia ativa |
+|---|---|---|---|
+| **Obra Manager** (obramanager.com.br) | *"Sua obra organizada, sem sair do WhatsApp"* | não apurado | **Sim — 4 ativos** |
+| **Zé Obra** (zeobra.com.br) | Controle de obra pelo WhatsApp, para arquitetos | grátis, sem cartão | Não, nunca |
+| **Obra no Bolso IA** (obranobolsoai.com.br) | Gestão de obra via WhatsApp com IA | 3 dias | Parou em 10/07 |
+| **Zap da Obra** (zapdaobra.com) | não apurado | "7 Dias Grátis" | Parou em 09/2025 |
 
-**Anúncios no Meta: zero.** Nunca anunciaram.
+**Obra Manager é o achado mais importante desta versão.** Quatro anúncios ativos, todos com o mesmo headline, criados em 18/08/2026 e um deles recolocado em veiculação em 06/09. O headline é o seu posicionamento escrito por outra pessoa: obra organizada, sem sair do WhatsApp. Está na camada 1 **e** na camada 2 — disputa seu cliente e sua impressão ao mesmo tempo. É o único concorrente nessa situação.
 
-Três implicações:
-- O WhatsApp-first com leitura de nota **já tem dono de discurso**, e ele desceu a detalhes que vocês não prometem — recibo à mão e print de PIX é coisa que só quem viveu obra pensa em listar.
-- Eles miram **arquiteto** na home; vocês miram engenheiro e pequena construtora. Dá para não colidir de frente.
-- **O PDF pro dono da obra é um ciclo de valor que a sua página não menciona.** Quem toca obra de terceiro precisa prestar contas. Vale checar se o ZapObra faz e, se faz, subir isso.
+**Zé Obra** continua sendo o gêmeo de produto: lê NF, NFC-e, NFS-e, recibo, recibo escrito à mão e print de comprovante PIX, aceita áudio e transcreve, organiza por fornecedor e categoria, e gera PDF mensal que vai pro cliente pelo próprio WhatsApp. Mira arquiteto. Nunca anunciou.
 
-### RD O Pro — mesma faixa de preço, produto mais amplo
+**Obra no Bolso IA** volta para a camada 1. Eu tinha rebaixado para "dormente" por causa da mídia parada — critério errado. O produto existe, o site está no ar, o checkout na Hotmart está ativo e o comprador é o seu. Mídia desligada é estado, não identidade.
 
-R$ 104,50/mês no Standard (até 10 obras e 10 usuários), R$ 175 no Plus, Enterprise sob consulta. Trial de 7 dias sem cartão — **idêntico ao seu** — mais demo de 20 min e checkout Hotmart.
+**Zap da Obra** tem site no ar e um anúncio de "7 Dias Grátis" em 18/09/2025, nada depois. Pegada de busca quase nula. Além de concorrente, é **colisão de nome** com o ZapObra — vale registrar marca antes de escalar mídia.
 
-Está na camada de compra porque a faixa de preço e o trial são os mesmos, então ele aparece na mesma comparação que você. Mas o ângulo de venda é outro: lidera com **RDO manual**, não com custo. Quem sofre de RDO precisa prestar contas formalmente; quem sofre do seu problema não sabe quanto já gastou. Compradores diferentes dentro da mesma pessoa — e o seu tem gatilho diário, o dele não.
+### Os de controle financeiro — mesma dor, outro canal
 
-### Em Obras App — está abaixo de você, não acima
+| Concorrente | Promessa | Trial | Preço |
+|---|---|---|---|
+| **ObraSimples** (obrasimples.com.br) | Controle financeiro de obra em tempo real, pelo celular | **7 dias sem cartão** | até 2 obras / até 10 obras |
+| **RD O Pro** (rdopro.com.br) | RDO e gestão, de 1 obra a múltiplas frentes | 7 dias sem cartão | R$ 104,50 a R$ 175 |
+| **Meu Construtor** (meuconstrutor.ia.br) | Gestão com IA no app e web | 7 dias | R$ 149,90 |
 
-Cinco faixas, incluindo **plano Gratuito permanente**. Mira também proprietário de casa própria, não só profissional. Oferece cupom de desconto em lojas parceiras.
+**ObraSimples** é outro que eu tinha perdido. Dashboard mostrando onde cada centavo foi, saldo e ritmo de gasto em tempo real "antes de fechar com o próximo fornecedor", lista de compras para conferir no celular na loja de material. Planos por número de obras simultâneas, mirando **investidor imobiliário, mestre de obra e pequena construtora** — o seu ICP, com outras palavras. Trial de 7 dias sem cartão, idêntico ao seu. Não é WhatsApp-first (é app), mas resolve a mesma dor para a mesma pessoa.
 
-Importa como piso: ele captura o lead mais barato e menos qualificado do mercado. Não rouba seu cliente pagante, mas ensina o mercado a esperar que exista versão grátis.
+**RD O Pro** entra pela faixa de preço e pelo trial idêntico, apesar do produto mais amplo. Lidera com RDO manual, não com custo — comprador diferente dentro da mesma pessoa.
 
-### Obra no Bolso IA — dormente
+### Abaixo de você
 
-Mesma tese (WhatsApp + IA), trial de 3 dias, checkout Hotmart. Cinco anúncios, todos em 10/07/2026, saídos de uma **página pessoal** ("Engenheiro Murilo Lemos"), nada desde então. Perfil de validação de fundador, não de operação. Monitore, não planeje contra.
-
----
+**Em Obras App** — cinco faixas, incluindo plano Gratuito permanente, mirando também proprietário de casa própria, com cupom em lojas parceiras. Captura o lead mais barato do mercado e ensina o mercado a esperar versão grátis.
 
 ## Camada 2 — Concorrentes de atenção
 
@@ -64,6 +78,7 @@ Quem consome a mesma impressão. Aqui o produto não importa: o CPM que você pa
 | **Mais Controle** | **69** | 09/07, 07/08, 02–03/09, 11/09, 13/09 | "Mais Controle para sua Obra!" + Imersão Online 22–23/set |
 | **Brickup** | 17 | 22–24/06, 18–24/08, 15/09 | "Experimente o RDO grátis da Brickup" |
 | **RD O Pro** | ~6 | 27/08, 10–11/09 | "50% de desconto… Chega de perder tempo com RDO manual" |
+| **Obra Manager** | **4** | 18/08, recolocado 06/09 | "Sua obra organizada, sem sair do WhatsApp" |
 | **Em Obras App** | 3 | 13/08, 28/08, 08/09 | "Sua obra está atrasada? Assuma o controle agora!" |
 | **Vobi** | 1 | 13/05, 15/06, 08/09 | "Solicite seu convite agora!" |
 | **SIGO ERP** | 1 | 15/09 | "O lucro de cada obra em tempo real" |
@@ -72,7 +87,7 @@ Quem consome a mesma impressão. Aqui o produto não importa: o CPM que você pa
 
 O **Brickup** roda 17 criativos com uma única mensagem: RDO digital de graça, upsell do financeiro. Wedge bem escolhido — a tarefa mais chata e mais diária da obra, entregue isolada, sem dar o que gera receita.
 
-**Quem não custa nada a você:** Zé Obra, ConstrAI, Meu Construtor, Sienge e Gerencia Obras têm **zero anúncios**. O seu concorrente de produto mais perigoso não disputa uma impressão sequer com você.
+**Quem não custa nada a você:** Zé Obra, ObraSimples, ConstrAI, Meu Construtor, Sienge e Gerencia Obras têm **zero anúncios**. A maior parte dos seus concorrentes de produto não disputa uma impressão sequer com você — **a exceção é o Obra Manager**, o único que aparece nas duas camadas.
 
 **A leitura que importa:** tirando Mais Controle e Brickup, o leilão está vazio. Mercado com muita empresa e pouquíssimo anunciante é mercado onde criativo bom compra atenção desproporcional. Isso é a seu favor — desde que você não entre com criativo genérico de "controle da sua obra", que é exatamente onde o Mais Controle tem 69 peças rodando.
 
