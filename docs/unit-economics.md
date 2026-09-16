@@ -79,16 +79,72 @@ Para esse patamar:
 
 ---
 
-## O que ainda falta para fechar o modelo
+## A base fixa fechada
 
-Me falta **quanto dá, em reais por mês, Claude Code + Kairogen somados** — e que fatia disso você atribui ao ZapObra, se usa em outros projetos. Não vou estimar: o valor varia por plano e por câmbio, e errar aí contamina o ponto de equilíbrio inteiro.
+Câmbio usado: **R$ 5,40/US$**. Não consigo consultar a cotação do dia daqui — troque o número e a conta anda junto.
 
-Com esse número eu fecho:
-- o ponto de equilíbrio real em número de clientes, por plano;
-- quantos meses de R$ 1.000/mês até o MRR cobrir a base fixa;
-- em que MRR faz sentido subir o tráfego, e para quanto.
+| Item | R$/mês | Natureza |
+|---|---:|---|
+| Claude Code Max (US$ 200) | **1.080** | ferramenta |
+| Supabase Pro | 127 | infra |
+| Kairogen | 100 | ferramenta |
+| VPS Hostinger | 88 | infra |
+| Domínio | ~7 | infra |
+| **Custo de existir** | **≈ 1.402** | roda com 0 ou 100 clientes |
+| Tráfego pago | 1.000 | aquisição — não é custo de existir |
+| **Saída total/mês** | **≈ 2.402** | |
 
-Uma referência de ordem de grandeza enquanto isso: a R$ 97, três clientes por mês adicionam **R$ 291 de MRR por mês**. O MRR é cumulativo e o tráfego é recorrente, então a curva vira a favor — mas leva alguns meses, e o quanto depende exatamente do número que falta.
+### O elefante: Claude Code é 77% da sua base fixa
+
+R$ 1.080 contra R$ 222 de toda a infra somada — **quase cinco vezes o custo de rodar o produto inteiro**. Em clientes: são **~7 clientes pagantes existindo só para pagar essa assinatura**, antes de qualquer outra coisa.
+
+Não é crítica, é dimensionamento. Duas perguntas que só você responde:
+
+- **Você usa Claude Code em outros projetos?** Se sim, atribuir 100% ao ZapObra distorce tudo. Aloque a fatia real; o ponto de equilíbrio cai proporcional.
+- **Se o ZapObra é o único projeto**, a pergunta é se a ferramenta acelera o suficiente para valer 7 clientes de receita por mês. Pode valer — desenvolvimento acelerado tem valor real — mas é uma decisão consciente, não um custo de fundo.
+
+E é despesa em dólar: a R$ 5,00 dá R$ 1.000; a R$ 6,00 dá R$ 1.200. Uma oscilação de câmbio de 10% mexe mais no seu resultado que um cliente inteiro do Básico.
+
+---
+
+## Ponto de equilíbrio
+
+Contribuição por cliente = mensalidade − ~R$ 6 (Gemini + cobrança).
+
+| Cenário de mix | Contribuição média | Clientes p/ cobrir os R$ 1.402 | Clientes p/ cobrir tudo (R$ 2.402) |
+|---|---:|---:|---:|
+| Só Básico (R$ 97) | R$ 91 | **16** | 27 |
+| Só Profissional (R$ 197) | R$ 191 | **8** | 13 |
+| Só Empresarial (R$ 397) | R$ 391 | **4** | 7 |
+| Mix 50/40/10 | R$ 161 | **9** | **15** |
+
+Repare no que a tabela diz: **16 clientes se você vender só o plano de entrada, 8 se vender o Profissional.** É o mesmo argumento da seção anterior, agora com número: o mix de venda importa mais que o volume.
+
+### Quanto tempo leva
+
+Com 3 clientes/mês no mix 50/40/10 (R$ 483 de MRR novo por mês) **e churn zero**:
+
+| Mês | Clientes | MRR | Marco |
+|---:|---:|---:|---|
+| 3 | 9 | R$ 1.449 | cobre o custo de existir |
+| 5 | 15 | R$ 2.415 | cobre tudo, tráfego incluso |
+
+Churn zero não existe. Este é o cenário-teto, não a previsão.
+
+### O limite que o churn impõe
+
+Com aquisição constante e churn mensal *c*, o MRR não cresce para sempre — ele estabiliza em `MRR novo ÷ c`:
+
+| Churn mensal | MRR de equilíbrio | Veredito |
+|---:|---:|---|
+| 5% | R$ 9.660 | confortável |
+| 10% | R$ 4.830 | funciona |
+| 15% | R$ 3.220 | apertado |
+| **20%** | **R$ 2.415** | **empata com o custo total — e para de crescer ali** |
+
+**Acima de ~20% de churn mensal, R$ 1.000/mês de tráfego nunca paga a estrutura.** Você roda para sempre e estaciona no empate.
+
+Esse é o número que fecha o raciocínio dos dois documentos: churn não é métrica de maturidade que se vê depois. **É a variável que decide se esse plano de tráfego funciona ou não**, e você ainda não mede.
 
 ---
 
